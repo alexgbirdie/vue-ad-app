@@ -40,6 +40,7 @@ export default new Router({
     {
       path: '/ad/:id',
       name: 'ad',
+      props: true,
       component: Ad
     },
     {

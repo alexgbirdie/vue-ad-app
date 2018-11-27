@@ -32,7 +32,7 @@
 
                         <v-img
                             height="100px"
-                            src="https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
+                            
                         ></v-img>
                     </v-flex>
                 </v-layout>
@@ -74,11 +74,15 @@ export default {
                 const ad = {
                     title: this.title,
                     description: this.description,
-                    promo: this.promo
+                    promo: this.promo,
+                    src: 'https://w-dog.net/wallpapers/15/3/437850330584583/leo-color-view.jpg'
                 }
 
                 console.log(ad)
+
+                this.$store.dispatch('createAd', ad)
             }
+            
         }
     }
 }
