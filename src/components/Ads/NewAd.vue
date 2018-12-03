@@ -50,7 +50,8 @@
                         <v-btn 
                             class="success" 
                             @click="creatAd"
-                            :disabled="!valid"
+                            :disabled="!valid || loading"
+                            :loading="loading"
                         >Creat ad</v-btn>
                     </v-flex>
                 </v-layout>
@@ -68,6 +69,11 @@ export default {
             valid: false
         }
     },
+    computed: {
+        loading () {
+            return this.$store.getters.loading
+        }
+    },
     methods: {
         creatAd () {
             if(this.$refs.form.validate()) {
@@ -81,9 +87,16 @@ export default {
                 console.log(ad)
 
                 this.$store.dispatch('createAd', ad)
+                    .then (() => {
+                        this.$router.push('/list')
+                    })
+                    .catch(() => {})
             }
             
         }
+    },
+    created () {
+        console.log(this.$store.getters.user)
     }
 }
 </script>
